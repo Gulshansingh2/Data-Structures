@@ -3,26 +3,27 @@ package sorting;
 public class BubbleSort {
 
 	public static void main(String[] args) {
-		Integer[] res = bubble(new Integer[]{3,5,7,9,5,3,1});
+		Integer[] res = bubbleSort(new Integer[]{3,5,7,9,5,3,1});
 		for (int i : res) {
 			System.out.print(i + " ");
 		}
-		System.out.println();
-		res = bubble(new Integer[]{4,1,2,3});
-		for (int i : res) {
-			System.out.print(i + " ");
-		}
+		
 	}
 
-	private static Integer[] bubble(Integer[] integers) {
-		for (int curr = 0; curr < integers.length; ++curr) {
-			for (int other = curr + 1; other < integers.length; ++other) {
-				if (integers[curr] > integers[other]) {
-					int tmp = integers[curr];
-					integers[curr] = integers[other];
-					integers[other] = tmp;
+	public static Integer[] bubbleSort(Integer[] integers) {
+		boolean flag;
+		for (int i = 0; i < integers.length; i++) {
+			flag = false;
+			for (int j = 0; j < integers.length-i-1; j++) {
+				if (integers[j] > integers[j+1]) {
+					int temp = integers[j];
+					integers[j] = integers[j+1];
+					integers[j+1] = temp;
+					flag = true;
 				}
 			}
+			if(flag==false)
+				break;
 		}
 		return integers;
 	}
